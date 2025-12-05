@@ -11,9 +11,14 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="script.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
   
 </head>
 <body>
+  
   <!-- Main container -->
    <div class = "app-container">
 
@@ -53,26 +58,28 @@
         <!-- form -->
          <form id="form" class ="card-form">
           <!-- cardholder name field -->
+           <div id="Cardholder-name-div">
            <label for ="name">Cardholder Name</label>
-           <input
-             type="text"
-             placeholder="e.g. Jane Appleseed"
-             id="name"
-             name="name"
-             required>
-             <!-- small = less important text -->
-           <small class ="name-error">Field Can't be blank</small>
-
-          <!-- card no field -->
-           <label for="number">Card Number</label>
-           <input
+            <input
               type="text"
-              placeholder=" e.g. 1234 5678 9123 0000"
-              id="number"
-              name="number"
+              placeholder="e.g. Jane Appleseed"
+              id="name"
+              name="name"
               required>
-            <small class="card-number-error">Wrong format, numbers only</small>
-
+              <!-- small = less important text -->
+            <small class ="name-error">Field Can't be blank</small>
+            </div> 
+          <!-- card no field -->
+           <div id="Card-number-div">
+            <label for="number">Card Number</label>
+            <input
+                type="text"
+                placeholder=" e.g. 1234 5678 9123 0000"
+                id="number"
+                name="number"
+                required>
+              <small class="card-number-error">Wrong format, numbers only</small>
+            </div>
           <!-- expiry date and cvc forms -->
 
             <div class="expiry">
@@ -108,7 +115,7 @@
                         id="cvc"
                         name="cvc"
                         required>
-                      <small class="cvc-error">Field Can't be blank</small>
+                      <small class="cvc-error">Field can't be blank</small>
 
                     </div>
                     
