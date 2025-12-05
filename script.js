@@ -54,14 +54,16 @@ function validateCVC(){
     return true
 };
 
-// validateName();
-// validateNumber();
-// validateMonth();
-// validateYear();
-// validateCVC();
+validateName();
+validateNumber();
+validateMonth();
+validateYear();
+validateCVC();
 
-confirm.addEventListener("click",(event) =>{
-    if (!validateName() ||!validateNumber() ||!validateMonth() ||!validateYear() || !validateCVC()){
-        event.preventDefault();
-    }
-});
+// form.addEventListener("submit", validateName)
+
+// confirm.addEventListener("click",(event) =>{
+//     if (!validateName() ||!validateNumber() ||!validateMonth() ||!validateYear() || !validateCVC()){
+//         event.preventDefault();
+//     }
+// });
