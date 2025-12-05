@@ -14,5 +14,6 @@ form.addEventListener("submit", e =>{
 
 const validateInputs = () => {
     const nameValue = name.value.trim();
-    
 }
+
+
