@@ -80,7 +80,6 @@ body{
 .expiry-month, .expiry-year{
     text-transform: uppercase;
 }
-<<<<<<< HEAD
 #name, #number{
     width: 300px;
     height: 25px;
@@ -130,10 +129,9 @@ input::placeholder{
 
 #confirm:hover{
     background-color: hsl(278, 71%, 37%);
-=======
+}
 
-.errorMessages{
+.errorMessages {
     color: red;
     display: none;
->>>>>>> 3696d9e9c22f2bf869754a91ccea0cbbce338fa6
 }
