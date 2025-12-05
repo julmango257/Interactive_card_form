@@ -71,3 +71,8 @@ body{
 .expiry-month, .expiry-year{
     text-transform: uppercase;
 }
+
+.errorMessages{
+    color: red;
+    display: none;
+}

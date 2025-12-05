@@ -61,7 +61,7 @@
              name="name"
              required>
              <!-- small = less important text -->
-           <small class ="name-error">Field Can't be blank</small>
+           <small class ="name-error errorMessages">Field Can't be blank</small>
 
           <!-- card no field -->
            <label for="number">Card Number</label>
@@ -71,7 +71,7 @@
               id="number"
               name="number"
               required>
-            <small class="card-number-error">Wrong format, numbers only</small>
+            <small class="card-number-error errorMessages">Wrong format, numbers only</small>
 
           <!-- expiry date and cvc forms -->
 
@@ -87,7 +87,7 @@
                       id="expiry-month"
                       name="expiry-month"
                       required>
-                    <small class="expiry-error">Wrong format, numbers only</small>
+                    <small class="expiry-error errorMessages">Wrong format, numbers only</small>
                   
                     <!-- expiry year field input-->
                     <input
@@ -96,7 +96,7 @@
                       id="expiry-year"
                       name="expiry-year"
                       required>
-                     <small class="expiry-error">Wrong format, numbers only</small>
+                     <small class="expiry-error-year errorMessages">Wrong format, numbers only</small>
                     
                     <!-- CVC field  -->
                     <div>
@@ -108,7 +108,7 @@
                         id="cvc"
                         name="cvc"
                         required>
-                      <small class="cvc-error">Field Can't be blank</small>
+                      <small class="cvc-error errorMessages">Field Can't be blank</small>
 
                     </div>
                     
