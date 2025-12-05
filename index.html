@@ -60,12 +60,28 @@
           <!-- cardholder name field -->
            <div id="Cardholder-name-div">
            <label for ="name">Cardholder Name</label>
+<<<<<<< HEAD
             <input
+=======
+           <input
+             type="text"
+             placeholder="e.g. Jane Appleseed"
+             id="name"
+             name="name"
+             required>
+             <!-- small = less important text -->
+           <small class ="name-error errorMessages">Field Can't be blank</small>
+
+          <!-- card no field -->
+           <label for="number">Card Number</label>
+           <input
+>>>>>>> 3696d9e9c22f2bf869754a91ccea0cbbce338fa6
               type="text"
               placeholder="e.g. Jane Appleseed"
               id="name"
               name="name"
               required>
+<<<<<<< HEAD
               <!-- small = less important text -->
             <small class ="name-error">Field Can't be blank</small>
             </div> 
@@ -80,6 +96,10 @@
                 required>
               <small class="card-number-error">Wrong format, numbers only</small>
             </div>
+=======
+            <small class="card-number-error errorMessages">Wrong format, numbers only</small>
+
+>>>>>>> 3696d9e9c22f2bf869754a91ccea0cbbce338fa6
           <!-- expiry date and cvc forms -->
 
             <div class="expiry">
@@ -94,7 +114,7 @@
                       id="expiry-month"
                       name="expiry-month"
                       required>
-                    <small class="expiry-error">Wrong format, numbers only</small>
+                    <small class="expiry-error errorMessages">Wrong format, numbers only</small>
                   
                     <!-- expiry year field input-->
                     <input
@@ -103,7 +123,7 @@
                       id="expiry-year"
                       name="expiry-year"
                       required>
-                     <small class="expiry-error">Wrong format, numbers only</small>
+                     <small class="expiry-error-year errorMessages">Wrong format, numbers only</small>
                     
                     <!-- CVC field  -->
                     <div>
@@ -115,7 +135,11 @@
                         id="cvc"
                         name="cvc"
                         required>
+<<<<<<< HEAD
                       <small class="cvc-error">Field can't be blank</small>
+=======
+                      <small class="cvc-error errorMessages">Field Can't be blank</small>
+>>>>>>> 3696d9e9c22f2bf869754a91ccea0cbbce338fa6
 
                     </div>
                     
