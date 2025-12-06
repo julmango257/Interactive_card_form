@@ -50,6 +50,13 @@ body{
     top: 0;
     left: 0;
 }
+/* Still need to fix this circle as it's stretched! */
+.white-circle {  
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 10px;
+  /* z-index: 1; */
+}
 
 .card-back{
     width: 350px;
@@ -187,12 +194,6 @@ input::placeholder{
     bottom: 500px;
 }
 
-/* .white-circle{
-    display: inline-block;
-    width: 1px;
-    height: 10px;
-} */
-
 .number{
     font-size: large;
     margin-top: 100px;
@@ -205,3 +206,4 @@ input::placeholder{
    margin-left: 275px;
    color: white;
 }
+
