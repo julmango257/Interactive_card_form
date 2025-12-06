@@ -31,7 +31,7 @@
           
           <div class ="card-details">
             <!-- logo -->
-            <img src="images/card-logo.svg" alt="Card Logo">
+            <img src="images/card-logo.svg" alt="Card Logo" class ="white-circle">
             
             <!-- Displayed Card Number -->
              <p class="number">0000 0000 0000 0000</p>
@@ -68,19 +68,8 @@
              name="name"
              required>
              <!-- small = less important text -->
-           <small class ="name-error errorMessages">Field Can't be blank</small>
+           <small class ="name-error errorMessages">Field can't be blank</small>
 
-          <!-- card no field -->
-           <label for="number">Card Number</label>
-           <input
-              type="text"
-              placeholder="e.g. Jane Appleseed"
-              id="name"
-              name="name"
-              required>
-              <!-- small = less important text -->
-            <small class ="name-error">Field Can't be blank</small>
-            </div> 
           <!-- card no field -->
            <div id="Card-number-div">
             <label for="number">Card Number</label>
@@ -90,7 +79,7 @@
                 id="number"
                 name="number"
                 required>
-              <small class="card-number-error">Wrong format, numbers only</small>
+              <small class="card-number-error errorMessages">Wrong format, numbers only</small>
             </div>
           <!-- expiry date and cvc forms -->
 
@@ -150,12 +139,12 @@
   <!-- Confirm --> 
 
   <!-- Completed state start -->
-
-  <!-- Thank you!
+   <!-- <div>
+  Thank you!
   We've added your card details
   Continue
-   -->
   
+  </div> -->
 
  
 </body>
