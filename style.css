@@ -53,8 +53,11 @@ body{
 /* Still need to fix this circle as it's stretched! */
 .white-circle {  
   position: absolute;
-  margin-top: 20px;
-  margin-left: 10px;
+  top: 20px;
+  left: 10px;
+  width: 80px;
+  height: auto;
+  object-fit: contain;
   /* z-index: 1; */
 }
 
@@ -88,9 +91,14 @@ body{
     justify-content: flex-start;
 }
 
-.card-details > img{
-    width: 40px;
-    margin-bottom: 30px;
+.card-details img.white-circle{  
+    height: auto;
+    width: 70px;
+    object-fit: contain;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* margin-bottom: 30px; */
 }
 
 .grid{
@@ -179,6 +187,7 @@ input::placeholder{
 
 #confirm:hover{
     background-color: hsl(278, 71%, 37%);
+    cursor: pointer;
 }
 
 .errorMessages {
