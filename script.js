@@ -13,6 +13,12 @@ const expiryError = document.querySelector(".expiry-error");
 const expiryErrorYear = document.querySelector(".expiry-error-year");
 const cvcError = document.querySelector(".cvc-error");
 
+const cardName = document.querySelector(".cardholder-name");
+const cardNumberDisplay = document.querySelector(".number");
+const cardExpMonth = document.querySelector(".expiry-month");
+const cardExpYear = document.querySelector(".expiry-year");
+const cardCvc = document.querySelector(".cvc");
+
 function validateName(){
     if (formName.value === ""){
         nameError.style.display="block"
@@ -60,10 +66,46 @@ validateMonth();
 validateYear();
 validateCVC();
 
-// form.addEventListener("submit", validateName)
+form.addEventListener("submit", (event) =>{
+    nameError.style.display="none";
+    numberError.style.display="none";
+    expiryError.style.display="none";
+    expiryErrorYear.style.display="none";
+    cvcError.style.display="none";
+
+    const isValidName = validateName() && validateNumber() && validateMonth() && validateYear() && validateCVC();
+
+    if (!isValid) {
+        event.preventDefault();
+    }
+
+});
 
 // confirm.addEventListener("click",(event) =>{
 //     if (!validateName() ||!validateNumber() ||!validateMonth() ||!validateYear() || !validateCVC()){
 //         event.preventDefault();
 //     }
 // });
+
+// Updating card details in real time.
+
+// Name
+formName.addEventListener("input", () => {
+    cardName.textContent = formName.value || "JANE APPLESEED";
+});
+// Card number 
+number.addEventListener("input", () => {
+    cardNumberDisplay.textContent = number.value || "0000 0000 0000 0000";
+});
+// Expiry M
+expiryMonth.addEventListener("input", () => {
+    cardExpMonth.textContent = expiryMonth.value || "00" + "/";
+});
+// Expiry Y
+expiryYear.addEventListener("input", () => {
+    cardExpYear.textContent = expiryYear.value || "/" + "00";
+});
+// CVC
+cvc.addEventListener("input", ()=> {
+    cardCvc.textContent = cvc.value || "000";
+});
