@@ -2,139 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive card details form</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">  
+  <title>Frontend Mentor | Interactive Card Details Form</title>
 
   <link rel="stylesheet" href="style.css">
-
   <script src="script.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  
-  <!-- Main container -->
-   <div class = "app-container">
 
-      <!-- card display section -->
-      <div class = "card-container">
+  <div class="app-container">
 
-        <!-- front of the card -->
-        <div class="card-front">
-          <img src="images/bg-card-front.png" alt="Front of the card">
-          
-          <div class ="card-details">
-            <!-- logo -->
-            <img src="images/card-logo.svg" alt="Card Logo" class="white-circle">
-            
-            <!-- Displayed Card Number -->
-             <p class="number">0000 0000 0000 0000</p>
-             <div class="grid">
-                <!-- cardholder name -->
-                 <p class="cardholder-name"> JANE APPLESEED </p>
+    <!-- Card Preview Section -->
+    <div class="card-container">
 
-                <!-- expiry date -->
-                 <div class="date">
-                  <p class="expiry-month"> 00/ </p>
-                  <p class="expiry-year"> 00 </p>
-                 </div>
-             </div>
+      <!-- CARD FRONT -->
+      <div class="card-front">
+        <img src="images/bg-card-front.png" alt="Front of credit card">
+
+        <div class="card-details">
+          <img src="images/card-logo.svg" alt="Card logo" class="white-circle">
+
+          <p class="number">0000 0000 0000 0000</p>
+
+          <div class="grid">
+            <p class="cardholder-name">JANE APPLESEED</p>
+
+            <div class="date">
+              <p class="expiry-month">00/</p>
+              <p class="expiry-year">00</p>
+            </div>
           </div>
         </div>
+      </div>
 
-          <!-- back of the card -->
-        <div class="card-back">
-          <img src="images/bg-card-back.png" alt="Back of the card">
-            <!-- cvc  -->
-          <p class="cvc">000</p>
+      <!-- CARD BACK -->
+      <div class="card-back">
+        <img src="images/bg-card-back.png" alt="Back of credit card">
+        <p class="cvc">000</p>
+      </div>
+
+    </div>
+
+    <!-- FORM SECTION -->
+    <div id="form-div">
+      <form id="form" class="card-form" novalidate>
+
+        <!-- Cardholder Name -->
+        <div class="form-group">
+          <label for="name">Cardholder Name</label>
+          <input
+            type="text"
+            placeholder="e.g. Jane Appleseed"
+            id="name"
+            name="name"
+            autocomplete="cc-name"
+            required
+          >
+          <small class="name-error errorMessages">Field can’t be blank</small>
         </div>
-        
-        <!-- form -->
-      <div id="form-div">
-         <form id="form" class ="card-form">
-          <!-- cardholder name field -->
-           <div id="Cardholder-name-div">
-           <label for ="name">Cardholder Name</label>
-           <input
-             type="text"
-             placeholder="e.g. Jane Appleseed"
-             id="name"
-             name="name"
-             required>
-             <!-- small = less important text -->
-           <small class ="name-error errorMessages">Field can't be blank</small>
 
-          <!-- card no field -->
-           <div id="Card-number-div">
-            <label for="number">Card Number</label>
-            <input
-                type="number"
-                placeholder=" e.g. 1234 5678 9123 0000"
-                id="number"
-                name="number"
-                required>
-              <small class="card-number-error errorMessages">Wrong format, numbers only</small>
-            </div>
-          <!-- expiry date and cvc forms -->
+        <!-- Card Number -->
+        <div class="form-group">
+          <label for="number">Card Number</label>
+          <input
+            type="text"
+            placeholder="e.g. 1234 5678 9123 0000"
+            id="number"
+            name="number"
+            inputmode="numeric"
+            autocomplete="cc-number"
+            required
+          >
+          <small class="card-number-error errorMessages">Wrong format, numbers only</small>
+        </div>
 
-            <div class="expiry">
+        <!-- Expiry + CVC Group -->
+        <div class="expiry-cvc-row">
+
+          <!-- Expiry Date -->
+          <div class="expiry">
+            <label>Card Expiry Date (MM/YY)</label>
+
+            <div class="expiry-inputs">
               <div>
-                <label for="expiry-month">Card Expiry Date MM/YY</label>
-                <div>
-
-                  <!-- expiry month input -->
-                   <input
-                      type="number"
-                      placeholder="MM"
-                      id="expiry-month"
-                      name="expiry-month"
-                      required>
-                    <small class="expiry-error errorMessages">Wrong format, numbers only</small>
-                  
-                    <!-- expiry year field input-->
-                    <input
-                      type="number"
-                      placeholder="YY"
-                      id="expiry-year"
-                      name="expiry-year"
-                      required>
-                     <small class="expiry-error-year errorMessages">Wrong format, numbers only</small>
-                    
-                    <!-- CVC field  -->
-                    <div>
-
-                      <label for="cvc">CVC</label>
-                      <input
-                        type="number"
-                        placeholder="e.g. 000"
-                        id="cvc"
-                        name="cvc"
-                        required>
-                      <small class="cvc-error errorMessages">Field Can't be blank</small>
-
-                    </div>
-                    
-                </div>
-
-                <!-- Submit    button            -->
-                 <button type="submit" id="confirm" class="confirmation">Confirm</button>
-             </form>
-                </div>
+                <input
+                  type="text"
+                  placeholder="MM"
+                  id="expiry-month"
+                  name="expiry-month"
+                  inputmode="numeric"
+                  maxlength="2"
+                  autocomplete="cc-exp-month"
+                  required
+                >
+                <small class="expiry-error errorMessages">Invalid month</small>
               </div>
 
+              <div>
+                <input
+                  type="text"
+                  placeholder="YY"
+                  id="expiry-year"
+                  name="expiry-year"
+                  inputmode="numeric"
+                  maxlength="2"
+                  autocomplete="cc-exp-year"
+                  required
+                >
+                <small class="expiry-error-year errorMessages">Invalid year</small>
+              </div>
             </div>
+          </div>
 
-         
-     </div>
-   </div>
+          <!-- CVC -->
+          <div class="cvc-group">
+            <label for="cvc">CVC</label>
+            <input
+              type="text"
+              placeholder="e.g. 000"
+              id="cvc"
+              name="cvc"
+              inputmode="numeric"
+              maxlength="3"
+              autocomplete="cc-csc"
+              required
+            >
+            <small class="cvc-error errorMessages">Field can't be blank</small>
+          </div>
 
+        </div>
 
+        <!-- Submit Button -->
+        <button type="submit" id="confirm" class="confirmation">Confirm</button>
+
+      </form>
+    </div>
+
+  </div>
 
   <!-- Confirm --> 
 

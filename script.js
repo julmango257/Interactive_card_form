@@ -1,111 +1,193 @@
-const form = document.getElementById ("form");
-const formName = document.getElementById("name");
-const number = document.getElementById("number");
-const expiryMonth = document.getElementById("expiry-month");
-const expiryYear = document.getElementById ("expiry-year");
-const cvc = document.getElementById("cvc");
 
-const confirm = document.getElementById("confirm");
 
-const nameError = document.querySelector(".name-error");
-const numberError = document.querySelector (".card-number-error");
-const expiryError = document.querySelector(".expiry-error");
-const expiryErrorYear = document.querySelector(".expiry-error-year");
-const cvcError = document.querySelector(".cvc-error");
+// Format card number into groups of 4 digits
+function formatCardNumber(value) {
+    return value
+        .replace(/\D/g, "")                // remove non-digits
+        .replace(/(.{4})/g, "$1 ")         // insert spaces after every 4 digits
+        .trim();
+}
 
-const cardName = document.querySelector(".cardholder-name");
-const cardNumberDisplay = document.querySelector(".number");
-const cardExpMonth = document.querySelector(".expiry-month");
-const cardExpYear = document.querySelector(".expiry-year");
-const cardCvc = document.querySelector(".cvc");
+// Show error message
+function showError(element, message) {
+    element.textContent = message;
+    element.style.display = "block";
+}
 
-function validateName(){
-    if (formName.value === ""){
-        nameError.style.display="block"
-        console.log("name error")
-        return false;
-    }
-    return true;
+// Hide error message
+function hideError(element) {
+    element.style.display = "none";
+}
+
+// Validate if number is digits of specific length
+function isDigits(value, length) {
+    return new RegExp(`^\\d{${length}}$`).test(value);
+}
+
+
+const inputs = {
+    name: document.getElementById("name"),
+    number: document.getElementById("number"),
+    month: document.getElementById("expiry-month"),
+    year: document.getElementById("expiry-year"),
+    cvc: document.getElementById("cvc"),
 };
 
-function validateNumber(){
-    if (number.value.length <12 || number.value.length >12){
-        numberError.style.display = "block"
-        return false;
-    }
-    return true;
+const cardDisplay = {
+    name: document.querySelector(".cardholder-name"),
+    number: document.querySelector(".number"),
+    month: document.querySelector(".expiry-month"),
+    year: document.querySelector(".expiry-year"),
+    cvc: document.querySelector(".cvc"),
 };
 
-function validateMonth(){
-    if (expiryMonth.value >12){
-        expiryError.style.display = "block"
-        return false;
-    }
-    return true
+// Error elements
+const errors = {
+    name: document.querySelector(".name-error"),
+    number: document.querySelector(".card-number-error"),
+    month: document.querySelector(".expiry-error"),
+    year: document.querySelector(".expiry-error-year"),
+    cvc: document.querySelector(".cvc-error"),
 };
 
-function validateYear(){
-    if (expiryYear.value <2025){
-        expiryErrorYear.style.display = "block"
-        return false;
-    }
-    return true
-};
+const form = document.getElementById("form");
 
-function validateCVC(){
-    if(cvc.value.length >3){
-        cvcError.style.display = "block"
-        return false;
-    }
-    return true
-};
-
-validateName();
-validateNumber();
-validateMonth();
-validateYear();
-validateCVC();
-
-form.addEventListener("submit", (event) =>{
-    nameError.style.display="none";
-    numberError.style.display="none";
-    expiryError.style.display="none";
-    expiryErrorYear.style.display="none";
-    cvcError.style.display="none";
-
-    const isValidName = validateName() && validateNumber() && validateMonth() && validateYear() && validateCVC();
-
-    if (!isValid) {
-        event.preventDefault();
-    }
-
-});
-
-// confirm.addEventListener("click",(event) =>{
-//     if (!validateName() ||!validateNumber() ||!validateMonth() ||!validateYear() || !validateCVC()){
-//         event.preventDefault();
-//     }
-// });
-
-// Updating card details in real time.
 
 // Name
-formName.addEventListener("input", () => {
-    cardName.textContent = formName.value || "JANE APPLESEED";
+inputs.name.addEventListener("input", () => {
+    const value = inputs.name.value.trim();
+    cardDisplay.name.textContent = value || "JANE APPLESEED";
 });
-// Card number 
-number.addEventListener("input", () => {
-    cardNumberDisplay.textContent = number.value || "0000 0000 0000 0000";
+
+// 
+inputs.number.addEventListener("input", () => {
+    let formatted = formatCardNumber(inputs.number.value);
+    inputs.number.value = formatted;
+
+    cardDisplay.number.textContent =
+        formatted || "0000 0000 0000 0000";
 });
-// Expiry M
-expiryMonth.addEventListener("input", () => {
-    cardExpMonth.textContent = expiryMonth.value || "00" + "/";
+
+// Expiry Month
+inputs.month.addEventListener("input", () => {
+    const value = inputs.month.value.padStart(2, "0");
+    cardDisplay.month.textContent = `${value}/`;
 });
-// Expiry Y
-expiryYear.addEventListener("input", () => {
-    cardExpYear.textContent = expiryYear.value || "/" + "00";
+
+// Expiry Year
+inputs.year.addEventListener("input", () => {
+    const value = inputs.year.value.padStart(2, "0");
+    cardDisplay.year.textContent = value;
 });
+
 // CVC
-cvc.addEventListener("input", ()=> {
-    cardCvc.textContent = cvc.value || "000";
+inputs.cvc.addEventListener("input", () => {
+    cardDisplay.cvc.textContent = inputs.cvc.value || "000";
+});
+
+
+// Validation Functions
+
+
+function validateName() {
+    const value = inputs.name.value.trim();
+
+    if (!value) {
+        showError(errors.name, "Can't be blank");
+        return false;
+    }
+
+    if (!/^[A-Za-z ]+$/.test(value)) {
+        showError(errors.name, "Letters only");
+        return false;
+    }
+
+    hideError(errors.name);
+    return true;
+}
+
+function validateCardNumber() {
+    const raw = inputs.number.value.replace(/\s/g, "");
+
+    if (!raw) {
+        showError(errors.number, "Can't be blank");
+        return false;
+    }
+
+    if (!/^\d+$/.test(raw)) {
+        showError(errors.number, "Numbers only");
+        return false;
+    }
+
+    if (raw.length !== 16) {
+        showError(errors.number, "Must be 16 digits");
+        return false;
+    }
+
+    hideError(errors.number);
+    return true;
+}
+
+function validateExpiryMonth() {
+    const value = inputs.month.value;
+
+    if (!isDigits(value, 2)) {
+        showError(errors.month, "Invalid month");
+        return false;
+    }
+
+    if (Number(value) < 1 || Number(value) > 12) {
+        showError(errors.month, "Month 01–12");
+        return false;
+    }
+
+    hideError(errors.month);
+    return true;
+}
+
+function validateExpiryYear() {
+    const currentYear = Number(String(new Date().getFullYear()).slice(2));
+    const value = inputs.year.value;
+
+    if (!isDigits(value, 2)) {
+        showError(errors.year, "Invalid year");
+        return false;
+    }
+
+    if (Number(value) < currentYear) {
+        showError(errors.year, "Card expired");
+        return false;
+    }
+
+    hideError(errors.year);
+    return true;
+}
+
+function validateCVC() {
+    const value = inputs.cvc.value;
+
+    if (!isDigits(value, 3)) {
+        showError(errors.cvc, "Must be 3 digits");
+        return false;
+    }
+
+    hideError(errors.cvc);
+    return true;
+}
+
+// Form Submit
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const valid =
+        validateName() &
+        validateCardNumber() &
+        validateExpiryMonth() &
+        validateExpiryYear() &
+        validateCVC();
+
+    if (!valid) return;
+
+        //success state logic here
 });
